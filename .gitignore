@@ -1,2 +1,8 @@
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
 
-README copy.md
+error_log
+a/videos/
+pieces/config/db.php /* Contact admin for this file */
