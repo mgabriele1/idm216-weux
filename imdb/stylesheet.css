@@ -11,10 +11,10 @@ body{
 
 /* colors*/
 :root {
-    --h1: #F6C700;
-    --h2: #222222;
+    --h1: #89010D;
+    --h2: #C12020;
     --dark: #212121;
-    --accent1: #EAAF10;
+    --accent1: #F54F50;
 }
 /* elements*/
 body {
@@ -34,7 +34,7 @@ h2 {
     font-style: normal;
     color: white;
     text-transform: uppercase;
-    font-size: .9rem;
+    font-size: 1.1rem;
 }
 h2 b {
     font-family: futura-pt, sans-serif;
@@ -48,6 +48,7 @@ h3 a {
     font-family: futura-pt, sans-serif;
     font-weight: 800; /* exra bold */
     font-style: normal;
+    color: var(--h2);
     text-transform: uppercase;
     font-size: 1rem;
     text-decoration: none;
@@ -55,21 +56,22 @@ h3 a {
 
 .main a {
     font-size: 1.5rem;
-    color: var(--h1);
+    color: var(--h2);
 }
 
 
 .main a:visited {
     font-size: 1.5rem;
-    color: var(--h1);
+    color: var(--h2);
 }
 
 .secondary a {
-    color: var(--h2);
+    color: var(--dark);
 }
 .secondary a:visited {
-    color: var(--h2);
+    color: var(--dark);
 }
+
 b {
     font-family: futura-pt, sans-serif;
     font-weight: 500; /* medium */
@@ -141,13 +143,6 @@ img {
     max-height: 300px;
     padding: 1rem 1rem 2rem;
 }
-.header h3 {
-    justify-self: flex-end;
-    margin: 0;
-}
-.header img {
-    padding: 0 1rem 0 0;
-}
 
 /* links */
 .titles {
@@ -156,6 +151,9 @@ img {
     text-align: right;
 }
 
+.header img {
+    padding: 0 1rem 0 0;
+}
 /* team wrapper */
 .person-wrapper {
     display: grid;
@@ -167,7 +165,7 @@ img {
 }
 .darkred h1, .darkred h2{
     justify-self: flex-start;
-    padding: 1rem 3rem 1rem 1rem;
+    padding: 1rem 0 1rem 1rem;
 }
 .darkred p {
     padding: 1rem 0 1rem 1rem;
@@ -200,7 +198,28 @@ div p {
 }
 .lightred img {
     justify-self: flex-start;
+}
 
+/* image sizing by person */
+.wynn {
+    width: 80%;
+    max-width: 280px;
+}
+.ahmed {
+    width: 70%;
+    max-width: 245px;
+}
+.mel {
+    width: 70%;
+    max-width: 245px;
+}
+.devin {
+    width: 60%;
+    max-width: 210px;
+}
+.chelsea {
+    width: 70%;
+    max-width: 245px;
 }
 
 /* footer */
@@ -241,7 +260,12 @@ div p {
     .lightred h2, .darkred h2 {
         grid-area: h2;
         margin: 0;
-        font-size: .9rem;
+    }
+    .lightred div, .darkred p, p {
+        grid-area: p;
+        background-color: unset;
+        color: white;
+        justify-content: flex-start;
     }
     b, strong {
         color: white;
@@ -251,7 +275,7 @@ div p {
         width: 100%;
     }
     .darkred {
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 1fr;
         grid-auto-rows: auto;
         grid-template-areas:
         "h1 img"
@@ -259,21 +283,26 @@ div p {
         "p img";
     }
     .lightred {
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: .6fr 1fr;
         grid-auto-rows: auto;
         grid-template-areas:
         "img h1"
         "img h2"
         "img p";
     }
-    .lightred h1, .lightred h2 {
-        padding: 1rem 1rem 1rem 2rem;
+    .darkred h1, .darkred h2, .darkred p {
+        padding: 1rem 0 1rem 4rem;
     }
     .lightred img {
         background: linear-gradient(to left, var(--h2) 50%, white 50%);
     }
     .darkred img {
         background: linear-gradient(to left, white 50%, var(--h1) 50%);
+    }
+    .lightred p {
+        justify-self: flex-start;
+        padding: 1rem 1rem 1rem 4rem;
+        margin: 0;
     }
     .person-wrapper {
         padding: 2rem 0;
@@ -282,16 +311,30 @@ div p {
         color: white;
     }
 }
-
+@media screen and (min-width: 650px) {
+    .darkred h1, .darkred h2, .darkred p {
+        padding: 1rem 0 1rem 6rem;
+    }
+    .wynn {
+        width: 80%;
+        max-width: 300px;
+    }
+    .mel {
+        width: 70%;
+        max-width: 260px;
+    }
+}
 @media screen and (min-width: 750px) {
     h1 {
         font-size: 2rem;
     }
-    .lightred h1, .lightred h2 {
-        padding: 1rem 1rem 1rem 2rem;
+    .darkred h1, .darkred h2, .darkred p {
+        padding: 1rem 0 1rem 7rem;
+    }
+    .darkred {
+        grid-template-columns: 1fr .75fr;
     }
 }
-
 @media screen and (min-width: 850px) {
     .lightred, .darkred {
         max-width: 850px;
