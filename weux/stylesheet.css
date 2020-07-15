@@ -44,14 +44,31 @@ h2 b {
     text-transform: uppercase;
     font-size: 1.4rem;
 }
-h3 {
+h3 a {
     font-family: futura-pt, sans-serif;
     font-weight: 800; /* exra bold */
     font-style: normal;
     color: var(--h2);
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 1rem;
+    text-decoration: none;
 }
+
+.main a {
+    font-size: 1.5rem;
+    color: var(--h2);
+}
+
+
+.main a:visited {
+    font-size: 1.5rem;
+    color: var(--h2);
+}
+
+.secondary a {
+    color: black;
+}
+
 b {
     font-family: futura-pt, sans-serif;
     font-weight: 500; /* medium */
@@ -123,10 +140,14 @@ img {
     max-height: 300px;
     padding: 1rem 1rem 2rem;
 }
-.header h3 {
+
+/* links */
+.titles {
     justify-self: flex-end;
     margin: 0;
+    text-align: right;
 }
+
 .header img {
     padding: 0 1rem 0 0;
 }
