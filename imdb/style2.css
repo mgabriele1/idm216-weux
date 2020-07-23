@@ -5,9 +5,6 @@
     padding: 0;
 }
 
-body{
-    width: 100%;
-}
 
 /* colors*/
 :root {
@@ -165,8 +162,7 @@ img {
     padding: 2rem 0;
 }
 .darkred {
-    background: linear-gradient(to right, var(--h1) 90%, white 10%);
-    display: grid;
+    background: var(--h1);
 }
 .darkred h1, .darkred h2{
     justify-self: flex-start;
@@ -184,12 +180,10 @@ img {
 }
 
 .lightred {
-    background: linear-gradient(to left, var(--h2) 90%, white 10%);
-    display: grid;
+    background: var(--h2);
 }
 .lightred h1, .lightred h2 {
     justify-self: flex-start;
-    padding: 1rem 0 1rem 3rem;
 }
 .lightred div {
     display: flex;
@@ -301,9 +295,9 @@ div p {
         width: 850px;
     }
     .lightred {
-        justify-self: flex-end;
+        justify-self: right;
     }
     .darkred {
-        justify-self: flex-start;
+        justify-self: left;
     }
 }
