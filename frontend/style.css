@@ -16,6 +16,42 @@
     --red: #CC0000;
 }
 
+/* icons */
+@font-face {
+    font-family: 'imdb';
+    src: url('fonts/imdb.eot');
+    src: url('fonts/imdb.eot?#iefix') format('embedded-opentype'),
+         url('fonts/imd.woff') format('woff'),
+         url('fonts/imdb.ttf') format('truetype'),
+         url('fonts/imdb.svg#imdb') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icon-']:before{
+	display: inline-block;
+   font-family: 'imdb';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-transform: uppercase;
+}
+.icon-play:before{content:'\0041';}
+.icon-trailer:before{content:'\0042';}
+.icon-parent:before{content:'\0043';}
+.icon-export:before{content:'\0044';}
+.icon-user:before{content:'\0045';}
+.icon-search:before{content:'\0046';}
+.icon-clock:before{content:'\0047';}
+.icon-eye:before{content:'\0048';}
+.icon-heart:before{content:'\0049';}
+.icon-settings:before{content:'\004a';}
+.icon-right:before{content:'\004b';}
+.icon-left:before{content:'\004c';}
+.icon-home:before{content:'\004d';}
+.icon-star:before{content:'\004e';}
+.icon-list:before{content:'\004f';}
 
 /* main sections */
 
