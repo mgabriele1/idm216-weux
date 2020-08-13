@@ -13,70 +13,151 @@
 </head>
 
 <!--BODY-->
-<body>
+<body class="profile-pg">
     <!--HEADER-->
     <header>
+        <div class="logo">
+            <img src="graphics/logo.png" alt="imdb">
+        </div>
         <div class="profile-header">
             <img src="graphics/user.png" alt="user">
             <h4>
                 User Name
             </h4>
-            <i class="fa fa-pencil" aria-hidden="true" id="pencil"></i>
-            <i class="fa fa-cog" aria-hidden="true"></i>
+            <i class="icon-settings"></i>
         </div>
     </header>
 
     <!--CONTENT-->
     <div class="content">
-        <div class="slide-menu">
-            <h1 class="active">
-                Recently Viewed
+        <div class="landscape-scroll">
+            <h1 class="title">
+                Favorites
             </h1>
-            <h1>
+            <div class="profile-images">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+            </div>
+        </div>
+        <div class="landscape-scroll">
+            <h1 class="title">
                 Watchlist
             </h1>
-            <h1>
-                Rated
-
-            </h1>
+            <div class="profile-images">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+                <img src="graphics/minions_landscape.jpg">
+            </div>
         </div>
-        <div class="privacy">
-            <h3>
-                Share my Recents
-                <i class="fa fa-share-square-o" aria-hidden="true"></i>
-            </h3>
-            <h3>
-                Make Recents Public
-                <i class="fa fa-eye" aria-hidden="true"></i>
-            </h3>
-        </div>
-        <div class="profile-movie">
-            <a href="info.html">
-                <img src="graphics/minions_landscape.png" alt="movie thumbnail" class="movie">
-            </a>
-            <h1>
-                Minions
+        <div class="card-scroll">
+            <h1 class="title">
+                Rated and Reviewed
             </h1>
+            <div class="cards">
+                <div class="review">
+                    <div class="title-block">
+                        <h2>
+                            A treat for the whole family!
+                        </h2>
+                        <div class="rating">
+                            <i class="icon-star"></i>
+                            <p>9</p>
+                        </div>
+                    </div>
+                    <div class="date">
+                        <h3 class="movie-name">
+                            Minions
+                        </h3>
+                        <p>
+                            12/12/12
+                        </p>
+                    </div>
+                    <div class="write-up">
+                        <p>
+                            My wife and I went to see this, we loved both Despicable Me's, and had high hopes for the movie. Thankfully, while... 
+                        </p>
+                    </div>
+                    <div class="read-more">
+                        <p>Read More</p>
+                        <i class="icon-right"></i>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="title-block">
+                        <h2>
+                            A treat for the whole family!
+                        </h2>
+                        <div class="rating">
+                            <i class="icon-star"></i>
+                            <p>9</p>
+                        </div>
+                    </div>
+                    <div class="date">
+                        <h3 class="movie-name">
+                            Minions
+                        </h3>
+                        <p>
+                            12/12/12
+                        </p>
+                    </div>
+                    <div class="write-up">
+                        <p>
+                            My wife and I went to see this, we loved both Despicable Me's, and had high hopes for the movie. Thankfully, while... 
+                        </p>
+                    </div>
+                    <div class="read-more">
+                        <p>Read More</p>
+                        <i class="icon-right"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="profile-movie">
-            <img src="graphics/joker_landscape.png" alt="movie thumbnail">
-            <h1>
-                Joker
+        <div class="card-scroll">
+            <h1 class="title">
+               Your Celebrities
             </h1>
+            <div class="cards">
+                <div class="celebs">
+                    <img src="graphics/user.png">
+                    <h2>Celebrity Name</h2>
+                    <p>Movie, Movie, Movie</p>
+                </div>
+                <div class="celebs">
+                    <img src="graphics/user.png">
+                    <h2>Celebrity Name</h2>
+                    <p>Movie, Movie, Movie</p>
+                </div>
+                <div class="celebs">
+                    <img src="graphics/user.png">
+                    <h2>Celebrity Name</h2>
+                    <p>Movie, Movie, Movie</p>
+                </div>
+                <div class="celebs">
+                    <img src="graphics/user.png">
+                    <h2>Celebrity Name</h2>
+                    <p>Movie, Movie, Movie</p>
+                </div>
+            </div>
         </div>
     </div>
     <!--FOOTER NAV-->
     <footer>
         <a href="index.html" class="home">
-            <i class="fa fa-home" aria-hidden="true"></i>
+            <i class="icon-home"></i>
         </a>
         <div class="search">
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <i class="icon-search"></i>
         </div>
         <a href="profile.html" class="profile">
-            <i class="fa fa-user" aria-hidden="true" id="active"></i>
+            <i class="icon-user" id="active"></i>
         </a>
     </footer>
-    
 </body>
 </html>
