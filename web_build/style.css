@@ -300,6 +300,7 @@ footer i {
 .profile-images img {
     filter: brightness(100%);
     margin: 0 .2rem;
+    height: 70px;
 }
 .profile-pg .landscape-scroll, .card-scroll {
     padding-bottom: 0;
