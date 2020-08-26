@@ -404,7 +404,8 @@ footer i {
     font-size: 1.5rem;
 }
 .genre {
-    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
     padding-right: .5rem;
 }
 .genre p {
@@ -450,11 +451,14 @@ h2 button{
 }
 
 .storyline {
-    padding: 1rem 1rem;
+    padding: 1rem 1rem .5rem;
 }
 .storyline h4 {
-    font-size: .625rem; /*10px*/
+    font-size: .75rem; /*12px*/
     padding: .1 0 0 0;
+}
+.storyline h1 {
+    padding-bottom: .25rem;
 }
 .buttons3 button {
     font-size: .75rem; /*12px*/
