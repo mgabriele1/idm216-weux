@@ -1,21 +1,5 @@
 <?php require 'includes/_db.php'; ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<!--HEAD-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMDb</title>
-   <!--icons--> <script src="https://kit.fontawesome.com/6736a7ecf9.js" crossorigin="anonymous"></script>
-   <!-- fonts --> <link rel="stylesheet" href="https://use.typekit.net/fct0lke.css">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
-<!--do this-->   <link rel="icon" href="graphics/icon.ico" type="image/x-icon">
-</head>
-
-<!--BODY-->
-<body>
+<?php include 'includes/_header.php'; ?>
 
 <?php 
     //get from table and open connection
@@ -28,7 +12,7 @@
         die ('Database query failed');
     }
 ?>
-
+        <body>
         <!--LANDSCAPE DIV-->
         <div class="landscape">
             <i class="fa fa-repeat" aria-hidden="true"></i>
@@ -116,7 +100,7 @@
             </h1>
             <div class="images">
                 <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.html">
+                <a href="info.php">
                     <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
                 </a>
                 <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
@@ -131,7 +115,7 @@
             </h1>
             <div class="images">
                 <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.html">
+                <a href="info.php">
                     <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
                 </a>
                 <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
@@ -146,7 +130,7 @@
             </h1>
             <div class="images">
                  <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.html">
+                <a href="info.php">
                     <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
                 </a>
                 <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
@@ -158,13 +142,13 @@
     </div>
     <!--FOOTER NAV-->
     <footer>
-        <a href="index.html" class="home">
+        <a href="index.php" class="home">
             <i class="icon-home" id="active"></i>
         </a>
         <div class="search">
             <i class="icon-search"></i>
         </div>
-        <a href="profile.html" class="profile">
+        <a href="profile.php" class="profile">
             <i class="icon-user"></i>
         </a>
     </footer>
@@ -177,5 +161,5 @@
     mysqli_close($connection);
     ?>  
 
-</body>
-</html>
+
+<?php include 'includes/_footer.php'; ?>
