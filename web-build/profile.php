@@ -1,6 +1,17 @@
 <?php require 'includes/_db.php'; ?>
 <?php include 'includes/_header.php'; ?>
 
+<?php 
+//get table pt1
+$table = 'movies';
+$query = "SELECT * FROM {$table}";
+$result = mysqli_query($connection, $query);
+
+if (!$result) {
+    die('Database connection failed');
+} 
+?>
+
 <body class="profile-pg">
         <!--LANDSCAPE DIV-->
         <div class="landscape">
@@ -28,12 +39,20 @@
                 Favorites
             </h1>
             <div class="profile-images">
-                <img src="graphics/minions_landscape.jpg">
-                <img src="graphics/titanic_recent.jpg">
-                <img src="graphics/mulan_recent.jpg">
-                <img src="graphics/psycho_recent.jpg">
-                <img src="graphics/walle_recent.jpg">
-                <img src="graphics/pulpfiction_recent.jpg">
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $recent = $row['recent'];
+                $id = $row['id'];
+                if ($id > 10) {
+                echo "<a href=\"info.php?id={$id}\">";
+                echo "<img src=\"graphics/" . $recent . "\" alt=\"movie thumbnail\">";
+                echo "</a>";
+                if ($id > 20) {
+                break;
+                } }
+            }
+            ?>
             </div>
         </div>
         <div class="landscape-scroll">
@@ -41,12 +60,16 @@
                 Watchlist
             </h1>
             <div class="profile-images">
-                <img src="graphics/wreckit_recent.jpg">
-                <img src="graphics/palmsprings_recent.jpg">
-                <img src="graphics/aliens_recent.jpg">
-                <img src="graphics/crazy_recent.jpg">
-                <img src="graphics/invisible_recent.jpg">
-                <img src="graphics/platoon_recent.jpg">
+                <?php 
+                while($row = mysqli_fetch_assoc($result)) {
+
+                    $recent = $row['recent'];
+                    $id = $row['id'];
+                    echo "<a href=\"info.php?id={$id}\">";
+                    echo "<img src=\"graphics/" . $recent . "\" alt=\"movie thumbnail\">";
+                    echo "</a>";
+                }
+                ?>
             </div>
         </div>
         <div class="card-scroll">
@@ -54,62 +77,56 @@
                 Rated and Reviewed
             </h1>
             <div class="cards">
-                <div class="review">
-                    <div class="title-block">
-                        <h2>
-                            A treat for the whole family!
-                        </h2>
-                        <div class="rating">
-                            <i class="icon-star"></i>
-                            <p>9</p>
-                        </div>
-                    </div>
-                    <div class="date">
-                        <h3 class="movie-name">
-                            Minions
-                        </h3>
-                        <p>
-                            12/12/12
-                        </p>
-                    </div>
-                    <div class="write-up">
-                        <p>
-                            My wife and I went to see this, we loved both Despicable Me's, and had high hopes for the movie. Thankfully, while... 
-                        </p>
-                    </div>
-                    <div class="read-more">
-                        <p>Read More</p>
-                        <i class="icon-right"></i>
-                    </div>
-                </div>
-                <div class="review">
-                    <div class="title-block">
-                        <h2>
-                            A treat for the whole family!
-                        </h2>
-                        <div class="rating">
-                            <i class="icon-star"></i>
-                            <p>9</p>
-                        </div>
-                    </div>
-                    <div class="date">
-                        <h3 class="movie-name">
-                            Minions
-                        </h3>
-                        <p>
-                            12/12/12
-                        </p>
-                    </div>
-                    <div class="write-up">
-                        <p>
-                            My wife and I went to see this, we loved both Despicable Me's, and had high hopes for the movie. Thankfully, while... 
-                        </p>
-                    </div>
-                    <div class="read-more">
-                        <p>Read More</p>
-                        <i class="icon-right"></i>
-                    </div>
-                </div>
+
+            <?php 
+            //get table pt2
+            $table = 'movies';
+            $query = "SELECT * FROM {$table}";
+            $result = mysqli_query($connection, $query);
+
+            if (!$result) {
+                die('Database connection failed');
+            } 
+            ?>
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+                 
+               echo "<div class=\"review\">";
+                   echo "<div class=\"title-block\">";
+                        echo "<h2>";
+                            echo $row['usertitle'];
+                        echo "</h2>";
+                        echo "<div class=\"rating\">";
+                            echo "<i class=\"icon-star\"></i>";
+                            echo "<p>";
+                            echo $row['userstars'];
+                            echo "</p>";
+                        echo "</div>";
+                    echo "</div>";
+                    echo "<div class=\"date\">";
+                        echo "<h3 class=\"movie-name\">";
+                            echo $row['title'];
+                        echo "</h3>";
+                        echo "<p>";
+                            echo $row['id'] . "/" . "4/" . $row['year'];
+                        echo "</p>";
+                    echo "</div>";
+                    echo "<div class=\"write-up\">";
+                        echo "<p>";
+                            echo $row['userreview']; 
+                        echo "</p>";
+                    echo "</div>";
+                    echo "<div class=\"read-more\">";
+                        echo "<p>Read More</p>";
+                        echo "<i class=\"icon-right\"></i>";
+                    echo "</div>";
+                echo "</div>";
+               
+                if ($row['id']>8) {
+                break;
+                }
+                }
+                ?>
             </div>
         </div>
         <div class="card-scroll">
@@ -117,26 +134,27 @@
                Your Celebrities
             </h1>
             <div class="cards">
-                <div class="celebs">
-                    <img src="graphics/user.png">
-                    <h2>Celebrity Name</h2>
-                    <p>Movie, Movie, Movie</p>
-                </div>
-                <div class="celebs">
-                    <img src="graphics/user.png">
-                    <h2>Celebrity Name</h2>
-                    <p>Movie, Movie, Movie</p>
-                </div>
-                <div class="celebs">
-                    <img src="graphics/user.png">
-                    <h2>Celebrity Name</h2>
-                    <p>Movie, Movie, Movie</p>
-                </div>
-                <div class="celebs">
-                    <img src="graphics/user.png">
-                    <h2>Celebrity Name</h2>
-                    <p>Movie, Movie, Movie</p>
-                </div>
+
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $castArray = explode("*", $row['cast']);
+                $imagesArray = explode("*", $row['castphoto']);
+
+                echo "<div class=\"celebs\">";
+                    echo "<img src=\"graphics/" . $imagesArray[0] . "\">";
+                    echo "<h2>" . $castArray[0] . "</h2>";
+                    echo "<p>" . $row['title'] . "</p>";
+                echo "</div>";
+                
+                if ($row['id'] < 8) {
+                    continue;
+                }
+                if ($row['id'] >18) {
+                break;
+                }
+             } ?>
+            
             </div>
         </div>
     </div>
@@ -152,5 +170,10 @@
             <i class="icon-user" id="active"></i>
         </a>
     </footer>
+
+    <?php 
+    mysqli_free_result($result);
+    mysqli_close($connection);
+    ?>
 
 <?php include 'includes/_footer.php'; ?>

@@ -1,5 +1,43 @@
 <?php require 'includes/_db.php'; ?>
-<?php include 'includes/_header.php'; ?>
+
+<!--GET ID and QUERY-->
+<?php 
+    $id = $_GET['id'];
+
+    //get from table
+    $table = 'movies';
+    $query = "SELECT * FROM {$table} WHERE id={$id}";
+    $result = mysqli_query($connection, $query);
+
+    //error check and grab ID row
+    if (!$result) {
+        die('Database query failed');
+    } else {
+        $row = mysqli_fetch_assoc($result);
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--HEAD-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb</title>
+   <!--icons--> <script src="https://kit.fontawesome.com/6736a7ecf9.js" crossorigin="anonymous"></script>
+   <!-- fonts --> <link rel="stylesheet" href="https://use.typekit.net/fct0lke.css">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+<!--do this-->   <link rel="icon" href="graphics/icon.ico" type="image/x-icon">
+<style>
+
+    .info-hero {
+        background-image:linear-gradient(to top, rgba(0, 0, 0, 0.664), rgba(255, 255, 255, 0)), url("graphics/<?php echo $row['hero']; ?>");
+    }
+</style>
+</head>
+
+<!--BODY-->
 
 <body>
 <!--LANDSCAPE DIV-->
@@ -21,18 +59,28 @@
     <!--CONTENT-->
     <div class="content">
         <div class="info-hero">
-            <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
+            <img src="graphics/<?php echo $row['thumbnail']?>" alt="movie thumbnail">
+            <h1>
+                    <?php echo $row['title']?>
+            </h1>
             <div>
-                <h1>
-                    Minions
-                </h1>
                 <h2> <b>
-                    2015 • PG-13
+                <?php echo $row['year'] . " • " . $row['rating']?>
                 </b> </h2>
             </div>
             <div class="genre">
                 <p>
-                    Animation • Adventure • Comedy
+                    <?php 
+                    $genreArray = explode("*", $row['genre']); 
+                    for ($i=0;$i<count($genreArray);$i++) {
+                        $theGenre=$genreArray[$i];
+                        if ($i == count($genreArray)-1) {
+                            echo $theGenre;
+                        } else {
+                            echo $theGenre . " • ";
+                        }
+                    }
+                    ?>
                 </p>
             </div>
         </div>
@@ -40,18 +88,18 @@
             <div>
                 <i class="icon-clock"></i>
                 <h2>
-                    1h 31m
+                    <?php echo $row['time']?>
                 </h2>
             </div>
             <div>
                 <i class="icon-star"></i>
                 <h2>
-                    <b>8.6</b>/10
+                    <b><?php echo $row['stars']?></b>/10
                 </h2>
             </div>
             <h2>
                 <button class="gold">
-                    56
+                    <?php echo $row['metascore']?>
                 </button>
                 Metascore
             </h2>
@@ -68,13 +116,43 @@
         </div>
         <div class="directors">
             <div>
-                <h3>Directors:</h3> <p>Kyle Balda, Pierre Coffin</p>
+                <h3>Director(s):</h3> <p> <?php 
+                    $directorArray = explode("*", $row['director']); 
+                    for ($i=0;$i<count($directorArray);$i++) {
+                        $theDirector=$directorArray[$i];
+                        if ($i == count($directorArray)-1) {
+                            echo $theDirector;
+                        } else {
+                        echo $theDirector . ", ";
+                        }
+                    }
+                    ?> </p>
             </div>
             <div>
-                <h3>Writer:</h3> <p>Brian Lynch</p>
+                <h3>Writer(s):</h3> <p> <?php 
+                    $writerArray = explode("*", $row['writer']); 
+                    for ($i=0;$i<count($writerArray);$i++) {
+                        $theWriter=$writerArray[$i];
+                        if ($i == count($writerArray)-1) {
+                            echo $theWriter;
+                        } else {
+                        echo $theWriter . ", ";
+                        }
+                    }
+                    ?> </p>
             </div>    
             <div>
-                <h3>Stars:</h3> <p>Sandra Bullock, Jon Hamm, Michael Keaton</p>
+                <h3>Stars:</h3> <p> <?php 
+                    $starsArray = explode("*", $row['cast']); 
+                    for ($i=0;$i<count($starsArray);$i++) {
+                        $theStars=$starsArray[$i];
+                        if ($i == count($starsArray)-1) {
+                            echo $theStars;
+                        } else {
+                        echo $theStars . ", ";
+                        }
+                    }
+                    ?> </p>
             </div>   
         </div>
         <div class="storyline">
@@ -82,7 +160,7 @@
                 Storyline
             </h1>
             <h4>
-                Ever since the dawn of time, the Minions have lived to serve the most despicable of masters. From the T-Rex to Napoleon, the easily distracted tribe has helped the biggest and the baddest of villains. Now, join protective leader Kevin, teenage rebel Stuart, and lovable little Bob on a global road trip. They'll earn a shot to work for a new boss, the world's first female supervillain, and try to save all of Minionkind from annihilation.
+                 <?php echo $row['storyline']?>
             </h4>
         </div>
         <div class="buttons">

@@ -288,6 +288,7 @@ footer i {
     width: 115px;
     filter: brightness(50%);
     margin: .05rem;
+    height: 70px;
 }
 .landscape-scroll i {
     font-size: 1.5rem;
@@ -326,12 +327,19 @@ footer i {
     width: 15rem;
     display: inline-block;
     margin-right: .4rem;
+    height: 14rem;
 }
 .title-block, .read-more, .date, .rating {
     display: flex;
 }
-.title-block h2, .celebs h2 {
+.celebs h2 {
+    text-transform: capitalize;
     font-weight: 700;
+}
+.title-block h2 {
+    font-weight: 700;
+    width: 9.25rem;
+    overflow: hidden;
 }
 .title-block {
     justify-content: space-between;
@@ -350,11 +358,16 @@ footer i {
 .date {
     padding: 0 .5rem .5rem;
 }
+.write-up {
+    height: 7.75rem;
+    overflow: hidden;
+}
 .write-up p {
     padding: 0 .5rem;
     white-space: normal;
 }
 .read-more {
+    padding-top: .25rem;
     justify-content: flex-end;
     color: var(--gold);
 }
@@ -372,7 +385,9 @@ footer i {
 }
 .celebs img {
     width: 70px;
+    height: 80px;
     padding: .5rem .2rem;
+    border-radius: 50%;
 }
 .celebs p {
     font-size: .7rem;
@@ -380,13 +395,12 @@ footer i {
 }
 /* info */
 .info-hero {
-    background-image:linear-gradient(to top, rgba(0, 0, 0, 0.664), rgba(255, 255, 255, 0)), url("graphics/minions_hero.png");
     background-repeat: no-repeat;
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: .75fr 1fr 2fr;
-    grid-template-rows: auto;
+    grid-template-columns: .75fr 1fr 1.2fr;
+    grid-template-rows: 1fr .1fr;
     align-items: flex-end;
 }
 
@@ -394,19 +408,32 @@ footer i {
     width: 4rem;
     align-self: center;
     margin: 0 0 0 .3rem;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 .info-hero div{
     margin: 0 0 .5rem .5rem;
+    text-transform: capitalize;
+}
+
+.info-hero h2 {
+    text-transform: uppercase;
 }
 
 .info-hero h1 {
     font-size: 1.5rem;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    padding-left: .5rem;
 }
 .genre {
     display: flex;
     justify-content: flex-end;
     padding-right: .5rem;
+    width: 7.6rem;
+    height: .9rem;
+    overflow: hidden;
 }
 .genre p {
     font-size: .5rem;
@@ -474,6 +501,7 @@ h2 button{
 }
 .directors p {
     font-size: .75rem;
+    text-transform: capitalize;
 }
 .directors div {
     display: flex;

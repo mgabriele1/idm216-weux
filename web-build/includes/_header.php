@@ -10,6 +10,7 @@
    <!-- fonts --> <link rel="stylesheet" href="https://use.typekit.net/fct0lke.css">
     <link rel="stylesheet" href="style.css" type="text/css"/>
 <!--do this-->   <link rel="icon" href="graphics/icon.ico" type="image/x-icon">
+
 </head>
 
 <!--BODY-->

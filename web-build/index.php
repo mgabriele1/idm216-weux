@@ -2,17 +2,17 @@
 <?php include 'includes/_header.php'; ?>
 
 <?php 
-    //get from table and open connection
-    $table = 'movies';
-    $query = "SELECT * FROM {$table}";
-    $result = mysqli_query($connection, $query);
+//get table pt1
+$table = 'movies';
+$query = "SELECT * FROM {$table}";
+$result = mysqli_query($connection, $query);
 
-    //errors
-    if (!$result) {
-        die ('Database query failed');
-    }
+if (!$result) {
+    die('Database connection failed');
+} 
 ?>
-        <body>
+
+<body>
         <!--LANDSCAPE DIV-->
         <div class="landscape">
             <i class="fa fa-repeat" aria-hidden="true"></i>
@@ -52,31 +52,24 @@
                 Featured Trailers
             </h1>
             <div class="images">
-                <div>
-                    <div>
-                        <i class="icon-trailer"></i>
-                    </div>
-                    <img src="graphics/minions_landscape.jpg">
-                </div>
-                <div>
-                    <div>
-                        <i class="icon-trailer"></i>
-                    </div>
-                    <img src="graphics/clueless_recent.jpg">
-                </div>
-                <div>
-                    <div>
-                        <i class="icon-trailer"></i>
-                    </div>
-                    <img src="graphics/forrest_recent.jpg">
-                </div>
-                <div>
-                    <div>
-                        <i class="icon-trailer"></i>
-                    </div>
-                    <img src="graphics/inception_recent.jpg">
-                </div>
-            </div>
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $id = $row['id'];
+                $recent = $row['recent'];
+
+                echo "<div>";
+                echo "<div>";
+                echo "<i class=\"icon-trailer\"></i>";
+                echo "</div>";
+                echo "<img src=\"graphics/" . $recent . "\" alt=\"movie thumbnail\">";
+                echo "</div>";
+                if ($id > 10) {
+                break;
+                }
+            }
+           ?>
+        </div>
         </div>
         <div class="home-section">
             <h1 class="title">    
@@ -84,14 +77,29 @@
             </h1>
             <div class="images">
             <?php 
-            //use connection
-                while($row = mysqli_fetch_assoc($result)) {
-                    
-                    $thumbnail = $row['thumbnail'];
-                    
-                    echo "<img src=\"graphics/" . $thumbnail . "\" alt=\"movie thumbnail\">";
-                }
+            //get table pt2
+            $table = 'movies';
+            $query = "SELECT * FROM {$table}";
+            $result = mysqli_query($connection, $query);
+
+            if (!$result) {
+                die('Database connection failed');
+            } 
             ?>
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $thumbnail = $row['thumbnail'];
+                $id = $row['id'];
+                echo "<a href=\"info.php?id={$id}\">";
+                echo "<img src=\"graphics/" . $thumbnail . "\" alt=\"movie thumbnail\">";
+                echo "</a>";
+                if ($id > 8) {
+                break;
+            }
+            }
+           ?>
+
             </div>
         </div>
         <div class="home-section">
@@ -99,14 +107,23 @@
                 Coming Soon to Theaters
             </h1>
             <div class="images">
-                <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.php">
-                    <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
-                </a>
-                <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
-                <img src="graphics/aliens_thumbnail.jpg">
-                <img src="graphics/br_thumbnail.jpg">
-                <img src="graphics/chinatown_thumbnail.jpg">
+
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $thumbnail = $row['thumbnail'];
+                $id = $row['id'];
+                echo "<a href=\"info.php?id={$id}\">";
+                echo "<img src=\"graphics/" . $thumbnail . "\" alt=\"movie thumbnail\">";
+                echo "</a>";
+                if ($id < 8) {
+                    continue;
+                }
+                if ($id > 16) {
+                break;
+                }
+            }
+           ?>
             </div>
         </div>
         <div class="home-section">
@@ -114,14 +131,22 @@
                 Award Winning
             </h1>
             <div class="images">
-                <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.php">
-                    <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
-                </a>
-                <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
-                <img src="graphics/aliens_thumbnail.jpg">
-                <img src="graphics/br_thumbnail.jpg">
-                <img src="graphics/chinatown_thumbnail.jpg">
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $thumbnail = $row['thumbnail'];
+                $id = $row['id'];
+                echo "<a href=\"info.php?id={$id}\">";
+                echo "<img src=\"graphics/" . $thumbnail . "\" alt=\"movie thumbnail\">";
+                echo "</a>";
+                if ($id < 16) {
+                    continue;
+                }
+                if ($id > 24) {
+                break;
+                }
+            }
+           ?>
             </div>
         </div>
         <div class="home-section">
@@ -129,14 +154,19 @@
                 Watch Soon
             </h1>
             <div class="images">
-                 <img src="graphics/mulan_thumbnail.jpg" alt="movie thumbnail">
-                <a href="info.php">
-                    <img src="graphics/minions_thumbnail.jpg" alt="movie thumbnail">
-                </a>
-                <img src="graphics/fightclub_thumbnail.jpg" alt="movie thumbnail">
-                <img src="graphics/aliens_thumbnail.jpg">
-                <img src="graphics/br_thumbnail.jpg">
-                <img src="graphics/chinatown_thumbnail.jpg">
+            <?php 
+             while($row = mysqli_fetch_assoc($result)) {
+
+                $thumbnail = $row['thumbnail'];
+                $id = $row['id'];
+                echo "<a href=\"info.php?id={$id}\">";
+                echo "<img src=\"graphics/" . $thumbnail . "\" alt=\"movie thumbnail\">";
+                echo "</a>";
+                if ($id < 24) {
+                    continue;
+                }
+            }
+           ?>
             </div>
         </div>
     </div>
@@ -153,13 +183,9 @@
         </a>
     </footer>
 
-    <?php 
-    //release returned data
-    mysqli_free_result($result);
-
-    //close db
-    mysqli_close($connection);
-    ?>  
-
+<?php 
+mysqli_free_result($result);
+mysqli_close($connection);
+?>
 
 <?php include 'includes/_footer.php'; ?>
