@@ -26,7 +26,7 @@ if (!$result) {
         <div class="profile-header">
             <img src="graphics/user.png" alt="user">
             <h4>
-                User Name
+                Jace Deleon
             </h4>
             <i class="icon-settings"></i>
         </div>
